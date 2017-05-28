@@ -26,7 +26,6 @@ mod update_systems;
 mod draw_systems;
 mod components;
 mod colors;
-mod weapons;
 mod notifications;
 
 use glium::glutin;

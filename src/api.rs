@@ -70,16 +70,16 @@ macro_rules! api_caller {
 // fn pause(&mut self);
 // fn resume(&mut self);
 api_caller! {
-    /// Change weapon of player
-    ///
-    /// kind: ["sniper" | "shotgun" | "hammer" | "uzis"],
-    fn set_player_weapon(kind: String, reload: f32, setup: f32, setdown: f32);
-    /// Set player shoot
-    fn set_player_shoot(shoot: bool);
+    // /// Change weapon of player
+    // ///
+    // /// kind: ["sniper" | "shotgun" | "hammer" | "uzis"],
+    // fn set_player_weapon(kind: String, reload: f32, setup: f32, setdown: f32);
+    // /// Set player shoot
+    // fn set_player_shoot(shoot: bool);
     /// Set zoom
     fn set_zoom(zoom: f32);
-    /// Set player orienation (gun ...)
-    fn set_player_aim(angle: f32);
+    // /// Set player orienation (gun ...)
+    // fn set_player_aim(angle: f32);
     /// Set player force
     fn set_player_force(angle: f32, strength: f32);
     /// Quit the game

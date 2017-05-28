@@ -108,7 +108,7 @@ macro_rules! obj {
 }
 
 obj! {
-    sniper: 0,
+    // sniper: 0,
 }
 
 fn load_obj(file: &'static str) -> (Vec<Vertex>, Vec<u8>) {

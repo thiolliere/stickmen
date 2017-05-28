@@ -4,14 +4,12 @@ use resources::*;
 use colors;
 
 use physics::draw_systems::*;
-use weapons::draw_systems::*;
 use notifications::draw_systems::*;
 
 pub fn run(world: &mut specs::World, frame: &mut graphics::Frame) {
     draw_notifications(world, frame);
     draw_physic(world, frame);
     draw_cursor(world, frame);
-    draw_weapon(world, frame);
 }
 
 const CURSOR_LENGTH: f32 = 0.044;

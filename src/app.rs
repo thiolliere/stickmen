@@ -8,7 +8,6 @@ use update_systems;
 use draw_systems;
 use components;
 use resources;
-use weapons;
 use utils::UpdateContext;
 use num_cpus;
 
@@ -82,14 +81,14 @@ impl App {
 impl_entity_builder!(App);
 
 impl api::Caller for App {
-    fn set_player_aim(&mut self, angle: f32) {
-        let world = self.planner.mut_world();
-        let players = world.read::<components::PlayerControl>();
-        let mut aims = world.write::<components::Aim>();
-        for (_, mut aim) in (&players, &mut aims).iter() {
-            aim.0 = angle;
-        }
-    }
+    // fn set_player_aim(&mut self, angle: f32) {
+    //     let world = self.planner.mut_world();
+    //     let players = world.read::<components::PlayerControl>();
+    //     let mut aims = world.write::<components::Aim>();
+    //     for (_, mut aim) in (&players, &mut aims).iter() {
+    //         aim.0 = angle;
+    //     }
+    // }
     fn set_player_force(&mut self, angle: f32, strength: f32) {
         let world = self.planner.mut_world();
         let players = world.read::<components::PlayerControl>();
@@ -124,36 +123,36 @@ impl api::Caller for App {
         let ref mut zoom = world.write_resource::<resources::Zoom>().0;
         *zoom = new_zoom;
     }
-    fn set_player_shoot(&mut self, shoot: bool) {
-        let world = self.planner.mut_world();
-        let mut shoots = world.write::<components::Shoot>();
-        let players = world.read::<components::PlayerControl>();
+    // fn set_player_shoot(&mut self, shoot: bool) {
+    //     let world = self.planner.mut_world();
+    //     let mut shoots = world.write::<components::Shoot>();
+    //     let players = world.read::<components::PlayerControl>();
 
-        for (_, entity) in (&players, &world.entities()).iter() {
-            if shoot {
-                shoots.insert(entity, components::Shoot);
-            } else {
-                shoots.remove(entity);
-            }
-        }
-    }
-    fn set_player_weapon(&mut self, kind: String, reload: f32, setup: f32, setdown: f32) {
-        if let Some(kind) = weapons::Kind::from_str(&*kind) {
-            let next_weapon = components::NextWeapon(components::Weapon {
-                kind: kind,
-                state: weapons::State::Setup(0.),
-                reload_factor: 1./reload,
-                setup_factor: 1./setup,
-                setdown_factor: 1./setdown,
-            });
+    //     for (_, entity) in (&players, &world.entities()).iter() {
+    //         if shoot {
+    //             shoots.insert(entity, components::Shoot);
+    //         } else {
+    //             shoots.remove(entity);
+    //         }
+    //     }
+    // }
+    // fn set_player_weapon(&mut self, kind: String, reload: f32, setup: f32, setdown: f32) {
+    //     if let Some(kind) = weapons::Kind::from_str(&*kind) {
+    //         let next_weapon = components::NextWeapon(components::Weapon {
+    //             kind: kind,
+    //             state: weapons::State::Setup(0.),
+    //             reload_factor: 1./reload,
+    //             setup_factor: 1./setup,
+    //             setdown_factor: 1./setdown,
+    //         });
 
-            let world = self.planner.mut_world();
-            let mut next_weapons = world.write::<components::NextWeapon>();
-            let players = world.read::<components::PlayerControl>();
+    //         let world = self.planner.mut_world();
+    //         let mut next_weapons = world.write::<components::NextWeapon>();
+    //         let players = world.read::<components::PlayerControl>();
 
-            for (_, entity) in (&players, &world.entities()).iter() {
-                next_weapons.insert(entity, next_weapon.clone());
-            }
-        }
-    }
+    //         for (_, entity) in (&players, &world.entities()).iter() {
+    //             next_weapons.insert(entity, next_weapon.clone());
+    //         }
+    //     }
+    // }
 }

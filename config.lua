@@ -20,12 +20,12 @@ run_dir_buf = {}
 function input(state, scancode, code)
 	if state == "pressed" then
 		if run_keys[code] then run_key_pressed(run_keys[code])
-		elseif code == shoot_key then set_player_shoot(true)
-		elseif code == "r" then set_player_weapon("sniper", 0.4, 1, 1)
+		-- elseif code == shoot_key then set_player_shoot(true)
+		-- elseif code == "r" then set_player_weapon("sniper", 0.4, 1, 1)
 		end
 	else
 		if run_keys[code] then run_key_released(run_keys[code])
-		elseif code == shoot_key then set_player_shoot(false)
+		-- elseif code == shoot_key then set_player_shoot(false)
 		end
 	end
 	local a = run_dir_buf[1] or ""
@@ -108,7 +108,7 @@ function update_player_run_dir()
 end
 
 function mouse_moved(x, y)
-	set_player_aim(math.atan2(y,x))
+	-- set_player_aim(math.atan2(y,x))
 end
 
 function mouse_wheel(horizontal, vertical)
@@ -123,5 +123,5 @@ end
 set_zoom(zoom)
 add_wall(0, 0, 5, 10)
 add_character(10, 10, velocity, time_to_reach_vmax, weight)
-set_player_weapon("sniper", 0.4, 1, 1)
+-- set_player_weapon("sniper", 0.4, 1, 1)
 fill_physic_world()
