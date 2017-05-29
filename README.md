@@ -1,8 +1,12 @@
-# Ruga
+# Stickmen
 
 a game made in rust
 
 it is in early development.
+
+the graphics design may look like this:
+
+![ruga_scene](ruga_scene.png)
 
 ## Licenses
 
